@@ -51,7 +51,17 @@ function formatToCurrency(amount) {
   return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 }
 
-//Dobule Balance
+//Double Balance
+
+const doubleBalance = function () {
+  data = data.map((user) => {
+    return { ...user, balance: user.balance * 2 };
+  });
+
+  updateDOM();
+};
+
+//fi
 
 //call random Users and
 getRandomUser();
@@ -61,4 +71,6 @@ getRandomUser();
 //Event Listeners
 btnAddUser.addEventListener('click', getRandomUser);
 
-btndouble.addEventListener('click', doubleBalance);
+btnDouble.addEventListener('click', doubleBalance);
+
+btnFilter.addEventListener('click', filterRich);
