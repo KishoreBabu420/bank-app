@@ -61,7 +61,26 @@ const doubleBalance = function () {
   updateDOM();
 };
 
-//fi
+//filter rich
+
+const filterRich = function () {
+  data = data.filter((user) => user.balance > 75000);
+  updateDOM();
+};
+
+//totalBalance
+
+const totalBalance = function () {
+  const wealth = data.reduce((acc, user) => (acc = acc + user.balance), 0);
+
+  console.log(wealth);
+
+  const wealthEl = document.createElement('div');
+  wealthEl.innerHTML = `<h3>Total Balance: <strong>${formatToCurrency(
+    wealth
+  )}</strong></h3>`;
+  main.appendChild(wealthEl);
+};
 
 //call random Users and
 getRandomUser();
@@ -74,3 +93,5 @@ btnAddUser.addEventListener('click', getRandomUser);
 btnDouble.addEventListener('click', doubleBalance);
 
 btnFilter.addEventListener('click', filterRich);
+
+btnTotal.addEventListener('click', totalBalance);
